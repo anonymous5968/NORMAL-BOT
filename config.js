@@ -1,6 +1,5 @@
 const fs = require('fs-extra');
 const { Sequelize } = require('sequelize');
-const logdna = require('logdna'); // Mezmo (LogDNA) integration
 require('newrelic'); // New Relic integration
 
 if (fs.existsSync('config.env'))
@@ -13,16 +12,6 @@ const databasePath = path.join(__dirname, './database.db');
 const DATABASE_URL = process.env.DATABASE_URL === undefined
     ? databasePath
     : process.env.DATABASE_URL;
-
-// Initialize Mezmo (LogDNA) logger
-const logdnaOptions = {
-    app: 'BMW_MD_Bot',
-    env: process.env.NODE_ENV || 'production',
-};
-const logdnaLogger = logdna.createLogger('a41a4e28be4cf00c966be64b63b630d6', logdnaOptions);  // Replaced LOGDNA_KEY with the actual value
-
-// Log example messages using Mezmo
-logdnaLogger.log('Bot is starting...', { level: 'info' });
 
 module.exports = {
     session: process.env.SESSION_ID || '',
@@ -67,7 +56,4 @@ fs.watchFile(fichier, () => {
     console.log(`mise à jour ${__filename}`);
     delete require.cache[fichier];
     require(fichier);
-
-    // Log the file reload event using Mezmo
-    logdnaLogger.log(`Configuration file ${__filename} was reloaded.`, { level: 'info' });
 });
