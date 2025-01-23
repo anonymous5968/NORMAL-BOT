@@ -16,16 +16,19 @@ const DATABASE_URL = process.env.DATABASE_URL === undefined
 
 // Initialize Mezmo (LogDNA) logger
 const logdnaOptions = {
-    app: 'Anony-bot',
-    const logdnaLogger = logdna.createLogger('a41a4e28be4cf00c966be64b63b630d6', logdnaOptions);  // Replaced LOGDNA_KEY with the actual value
+    app: 'BMW_MD_Bot',
+    env: process.env.NODE_ENV || 'production',
+};
+const logdnaLogger = logdna.createLogger('a41a4e28be4cf00c966be64b63b630d6', logdnaOptions);  // Replaced LOGDNA_KEY with the actual value
+
 // Log example messages using Mezmo
 logdnaLogger.log('Bot is starting...', { level: 'info' });
 
 module.exports = {
     session: process.env.SESSION_ID || '',
     PREFIXE: process.env.PREFIX || ".",
-    OWNER_NAME: process.env.OWNER_NAME || "Anonymous",
-    NUMERO_OWNER: process.env.NUMERO_OWNER || "Anonymous",
+    OWNER_NAME: process.env.OWNER_NAME || "Ibrahim Adams",
+    NUMERO_OWNER: process.env.NUMERO_OWNER || " Ibrahim Adams",
     AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "yes",
     AUTO_DOWNLOAD_STATUS: process.env.AUTO_DOWNLOAD_STATUS || 'no',
     BOT: process.env.BOT_NAME || 'BMW_MD',
