@@ -17,10 +17,7 @@ const DATABASE_URL = process.env.DATABASE_URL === undefined
 // Initialize Mezmo (LogDNA) logger
 const logdnaOptions = {
     app: 'Anony-bot',
-    env: process.env.NODE_ENV || 'production',
-};
-const logdnaLogger = logdna.createLogger(process.env.LOGDNA_KEY?.replace(/["]/g, ''), logdnaOptions);
-
+    const logdnaLogger = logdna.createLogger('a41a4e28be4cf00c966be64b63b630d6', logdnaOptions);  // Replaced LOGDNA_KEY with the actual value
 // Log example messages using Mezmo
 logdnaLogger.log('Bot is starting...', { level: 'info' });
 
